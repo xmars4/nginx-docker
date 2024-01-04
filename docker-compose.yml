@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+    nginx:
+        image: nginx
+        volumes:
+            - ./conf.d:/etc/nginx/conf.d
+            - /var/log/nginx:/var/log/nginx
+        restart: always
+        network_mode: host
+        environment:
+            - NGINX_PORT=80
+
+networks:
+    hostnet:
+        external: true
+        name: host
